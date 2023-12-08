@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+:root {
+    /* dark mode */
+    --VeryDarkBlue: hsl(235, 21%, 11%);
+    --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+    --LightGrayishBlue: hsl(234, 39%, 85%);
+    --LightGrayishBlue-hover: hsl(236, 33%, 92%);
+    --DarkGrayishBlue1: hsl(234, 11%, 52%);
+    --VeryDarkGrayishBlue2: hsl(233, 14%, 35%);
+    --VeryDarkGrayishBlue1: hsl(237, 14%, 26%);
+
+    /* Light mode */
+    --VeryLightGray: hsl(0, 0%, 98%);
+    --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+    --LightGrayishBlue: hsl(233, 11%, 84%);
+    --DarkGrayishBlue2: hsl(236, 9%, 61%);
+    --VeryDarkGrayishBlue3: hsl(235, 19%, 35%);
+}
+
+html, body {
+    scroll-behavior: smooth;
+    background-color: var(--VeryDarkBlue);
+}
+
+html.alternate {
+    background-color: var(--VeryLightGray);
+}
+
+header {
+    background: url(/IMAGES/bg-desktop-dark.jpg);
+    background-size: cover;
+}
+
+header.alternate {
+    background: url(/IMAGES/bg-desktop-light.jpg);
+}
+
+nav {
+    width: 100%;
+    height: 40vh;
+}
+
+#middle {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 13%;
+    right: 25%;
+    width: 50%;
+}
+
+.upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upper h1 {
+    color: #fff;
+    font-size: 35px;
+}
+
+.bi-brightness-high-fill {
+    display: flex;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.bi-brightness-high-fill.alternate {
+    display: none;
+}
+
+.bi-moon-fill {
+    display: none;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.bi-moon-fill.alternate{
+    display: flex;
+}
+
+.input-section {
+    margin: 40px 0 0;
+}
+
+.new, .new-lower {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.new.alternate, .new-lower.alternate {
+    background-color: var(--VeryLightGray);
+}
+
+
+
+
+.duo {
+    display: flex;
+}
+
+.duo .bi-check-circle-fill {
+    display: none;
+}
+
+.duo .bi-check-circle-fill.click {
+    display: block;
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    cursor: pointer;
+}
+
+.duo-lower {
+    display: flex;
+}
+
+.duo-lower .bi-check-circle-fill {
+    display: none;
+}
+
+.duo-lower .bi-check-circle-fill.click {
+    display: block;
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.new-lower {
+    border-bottom: 1px solid var(--VeryDarkGrayishBlue2);
+}
+
+.new i, .new-lower i {
+    display: block;
+    font-size: 25px;
+    padding: 10px;
+    color: var(--VeryDarkGrayishBlue2);
+}
+
+.new i.alternate, .new-lower i.alternate {
+    color: var(--LightGrayishBlue);
+}
+
+.new i.click {
+    display: none;
+}
+
+.new i:hover, .new-lower i:hover {
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.new input, .new-lower input{
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: var(--LightGrayishBlue);
+    background-color: var(--VeryDarkDesaturatedBlue);
+}
+
+.new input.alternate, .new-lower input.alternate {
+    color: var(--VeryDarkDesaturatedBlue);
+    background-color: var(--VeryLightGray);
+}
+
+
+.remainder {
+    margin: 30px 0;
+}
+
+.last-one {
+    padding: 18px 20px;
+    border-bottom: none;
+}
+
+.last-one p {
+    color: var(--DarkGrayishBlue2);
+    font-size: 18px;
+}
+
+.last-one p.alternate {
+    color: var(--LightGrayishBlue);
+}
+
+.middle-btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.all, 
+.active, 
+.completed {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 5px;
+    color: var(--DarkGrayishBlue2);
+    cursor: pointer;
+}
+
+.all.alternate, 
+.active.alternate, 
+.completed.alternate {
+    color: var(--DarkGrayishBlue2);
+}
+
+
+.all:hover,
+.active:hover, 
+.completed:hover {
+    color: var(--VeryLightGrayishBlue);
+}
+
+.all.alternate:hover,
+.active.alternate:hover, 
+.completed.alternate:hover {
+    color: var(--VeryDarkGrayishBlue3);
+}
+
+.clear {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 5px;
+    color: var(--DarkGrayishBlue2);
+    cursor: pointer;
+}
+
+.clear.alternate {
+    color: var(--DarkGrayishBlue2);
+}
+
+.clear.alternate:hover {
+    color: var(--VeryDarkGrayishBlue3);
+}
+
+.clear:hover {
+    color: var(--VeryLightGrayishBlue);
+}
+
