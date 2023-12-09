@@ -112,6 +112,7 @@ nav {
 
 .duo {
     display: flex;
+    cursor: pointer;
 }
 
 .duo .bi-check-circle-fill {
@@ -129,7 +130,17 @@ nav {
 
 .duo-lower {
     display: flex;
+    cursor: pointer;
 }
+
+.duo-lower .bi-circle  {
+    display: block;
+}
+
+.duo-lower .bi-circle.click {
+    display: none;
+}
+
 
 .duo-lower .bi-check-circle-fill {
     display: none;

@@ -13,8 +13,8 @@ const ItemThereInpt = document.querySelectorAll(".new-lower input");
 const newItemI = document.querySelector(".new i");
 const newItemI2 = document.querySelector(".duo .bi-check-circle-fill");
 
-const ItemThereI = document.querySelectorAll(".duo-lower i");
-const ItemThereI2 = document.querySelectorAll(".duo-lower .bi-check-circle-fill");
+const lowerCircle = document.querySelectorAll(".duo-lower .bi-circle");
+const lowerCircleClicked = document.querySelectorAll(".duo-lower .bi-check-circle-fill");
 
 const lastGuy = document.querySelector('.last-one')
 const lastP = document.querySelector('.last-one p')
@@ -52,7 +52,7 @@ const resetAltMode = () => {
 
     lastGuy.style.borderBottom = 'none';
 
-    ItemThereI.forEach(itemi => {
+    lowerCircle.forEach(itemi => {
         itemi.classList.remove('alternate');
     });
     ItemThere.forEach(item => {
@@ -83,7 +83,7 @@ const altMode = () => {
 
     lastGuy.style.borderBottom = `1px solid ${mainColor3}`;
 
-    ItemThereI.forEach(itemi => {
+    lowerCircle.forEach(itemi => {
         itemi.classList.toggle('alternate');
     });
 
@@ -110,27 +110,28 @@ const resetClicker = () => {
     newItemI2.classList.remove('click');
 }
 
-const lowerResetClicker = () => {
-    ItemThereI.forEach(eachItem  =>{
-        eachItem.classList.remove('click')
-    })    
-    ItemThereI2.forEach(eachRmndrBtn => {
-        eachRmndrBtn.classList.remove('click')
-    })
-}
-
-
 const clicker = () => {
     newItemI.classList.toggle('click');
     newItemI2.classList.toggle('click');
 };
 
+const lowerResetClicker = () => {
+    lowerCircle.forEach(lowercircle  =>{
+        lowercircle.classList.remove('click')
+    })    
+    lowerCircleClicked.forEach(lowercirclebtn => {
+        lowercirclebtn.classList.remove('click')
+    })
+}
+
+
+
 const lowerClicker = () => {
-    ItemThereI.forEach(itemtherei => {
-        itemtherei.classList.toggle('click');
+    lowerCircle.forEach(theLowerCircle => {
+        theLowerCircle.classList.toggle('click');
     });
-    ItemThereI2.forEach(itemtherei2 => {
-        itemtherei2.classList.toggle('click');
+    lowerCircleClicked.forEach(lowercirclebtnclicked => {
+        lowercirclebtnclicked.classList.toggle('click');
     });
 }
 
@@ -144,13 +145,11 @@ lightMode.addEventListener("click", resetAltMode)
 newItemI.addEventListener('click', clicker)
 newItemI2.addEventListener('click', resetClicker)
 
-ItemThereI.forEach(itemtherei => {
-    itemtherei.addEventListener('click', clicker);
+lowerCircle.forEach(itemtherei => {
+    itemtherei.addEventListener('click', lowerClicker);
 });
 
-ItemThereI2.forEach(itemtherei2 => {
-    itemtherei2.addEventListener('click', resetClicker);
+lowerCircleClicked.forEach(itemtherei2 => {
+    itemtherei2.addEventListener('click', lowerResetClicker);
 });
 
-// ItemThereI.addEventListener('click', clicker);
-// ItemThereI2.addEventListener('click', resetClicker);
