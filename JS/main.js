@@ -12,7 +12,8 @@ const ItemThereInpt = document.querySelectorAll(".new-lower input");
 
 const newItemI = document.querySelector(".new i");
 const newItemI2 = document.querySelector(".duo .bi-check-circle-fill");
-const ItemThereI = document.querySelectorAll(".new-lower i");
+
+const ItemThereI = document.querySelectorAll(".duo-lower i");
 const ItemThereI2 = document.querySelectorAll(".duo-lower .bi-check-circle-fill");
 
 const lastGuy = document.querySelector('.last-one')
@@ -35,8 +36,8 @@ const mainColor = getComputedStyle(root).getPropertyValue('--VeryDarkBlue');
 const mainColor2 = getComputedStyle(root).getPropertyValue('--VeryLightGray');
 const mainColor3 = getComputedStyle(root).getPropertyValue('--VeryDarkGrayishBlue2');
 
-console.log(mainColor3);
 
+console.log(ItemThere)
 
 
 
@@ -107,28 +108,49 @@ const altMode = () => {
 const resetClicker = () => {
     newItemI.classList.remove('click');
     newItemI2.classList.remove('click');
-
-    ItemThereI.classList.remove('click');
-    ItemThereI2.classList.remove('click');
 }
+
+const lowerResetClicker = () => {
+    ItemThereI.forEach(eachItem  =>{
+        eachItem.classList.remove('click')
+    })    
+    ItemThereI2.forEach(eachRmndrBtn => {
+        eachRmndrBtn.classList.remove('click')
+    })
+}
+
 
 const clicker = () => {
     newItemI.classList.toggle('click');
     newItemI2.classList.toggle('click');
-
-    ItemThereI.classList.toggle('click');
-    ItemThereI2.classList.toggle('click');
 };
 
-// const clicker = () => {
+const lowerClicker = () => {
+    ItemThereI.forEach(itemtherei => {
+        itemtherei.classList.toggle('click');
+    });
+    ItemThereI2.forEach(itemtherei2 => {
+        itemtherei2.classList.toggle('click');
+    });
+}
 
 
+
+
+
+darkMode.addEventListener("click", altMode)
+lightMode.addEventListener("click", resetAltMode)
 
 newItemI.addEventListener('click', clicker)
 newItemI2.addEventListener('click', resetClicker)
 
-ItemThereI.addEventListener('click', clicker)
-ItemThereI2.addEventListener('click', resetClicker)
+ItemThereI.forEach(itemtherei => {
+    itemtherei.addEventListener('click', clicker);
+});
 
-darkMode.addEventListener("click", altMode)
-lightMode.addEventListener("click", resetAltMode)
+ItemThereI2.forEach(itemtherei2 => {
+    itemtherei2.addEventListener('click', resetClicker);
+});
+
+// ItemThereI.addEventListener('click', clicker);
+// ItemThereI2.addEventListener('click', resetClicker);
