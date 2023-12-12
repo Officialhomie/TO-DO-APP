@@ -35,10 +35,15 @@ html.alternate {
 header {
     background: url(/IMAGES/bg-desktop-dark.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 header.alternate {
     background: url(/IMAGES/bg-desktop-light.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 nav {
@@ -119,6 +124,8 @@ nav {
     display: none;
 }
 
+
+
 .duo .bi-check-circle-fill.click {
     display: block;
     background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
@@ -130,7 +137,15 @@ nav {
 
 .duo-lower {
     display: flex;
+    align-items: center;
+    color: #fff;
     cursor: pointer;
+    gap: 20px;
+}
+
+.duo-lower p {
+    padding: 16px;
+    width: 100%;
 }
 
 .duo-lower .bi-circle  {
@@ -142,8 +157,13 @@ nav {
 }
 
 
-.duo-lower .bi-check-circle-fill {
+.new-lower .bi-x-lg {
     display: none;
+}
+
+.new-lower:hover .bi-x-lg{
+    cursor: pointer;
+    display: block;
 }
 
 .duo-lower .bi-check-circle-fill.click {

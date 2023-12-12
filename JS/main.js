@@ -1,9 +1,10 @@
 const upperH1 = document.querySelector(".todo-text");
-const darkMode = document.querySelector(".bi-brightness-high-fill");
+const darkMode = document.querySelector(".bi-x-lg");
+// console.log(darkMode);
 const lightMode = document.querySelector(".bi-moon-fill");
 const headerElement = document.querySelector("header");
 
-const newItem = document.querySelector(".new");
+const form = document.querySelector("form");
 const ItemThere = document.querySelectorAll(".new-lower");
 
 const newItemInpt = document.querySelector(".new input");
@@ -37,7 +38,7 @@ const mainColor2 = getComputedStyle(root).getPropertyValue('--VeryLightGray');
 const mainColor3 = getComputedStyle(root).getPropertyValue('--VeryDarkGrayishBlue2');
 
 
-console.log(ItemThere)
+// console.log(ItemThere)
 
 
 
@@ -47,7 +48,7 @@ const resetAltMode = () => {
     htmlElement.classList.remove('alternate'); 
     darkMode.classList.remove('alternate');
     lightMode.classList.remove('alternate');
-    newItem.classList.remove('alternate');
+    form.classList.remove('alternate');
 
 
     lastGuy.style.borderBottom = 'none';
@@ -79,7 +80,7 @@ const altMode = () => {
     htmlElement.classList.toggle('alternate'); 
     darkMode.classList.toggle('alternate');
     lightMode.classList.toggle('alternate');
-    newItem.classList.toggle('alternate');
+    form.classList.toggle('alternate');
 
     lastGuy.style.borderBottom = `1px solid ${mainColor3}`;
 
@@ -124,22 +125,13 @@ const lowerResetClicker = () => {
     })
 }
 
+const lowerClicker = (event) => {
+    const clickedElement = event.target;
+    clickedElement.classList.toggle('click');
 
-
-const lowerClicker = () => {
-    lowerCircle.forEach(theLowerCircle => {
-        theLowerCircle.classList.toggle('click');
-    });
-    lowerCircleClicked.forEach(lowercirclebtnclicked => {
-        lowercirclebtnclicked.classList.toggle('click');
-    });
 }
 
-
-
-
-
-darkMode.addEventListener("click", altMode)
+// darkMode.addEventListener("click", altMode)
 lightMode.addEventListener("click", resetAltMode)
 
 newItemI.addEventListener('click', clicker)
@@ -153,3 +145,102 @@ lowerCircleClicked.forEach(itemtherei2 => {
     itemtherei2.addEventListener('click', lowerResetClicker);
 });
 
+// localStorage.setItem("name", "Franddmkmksklin")
+// localStorage.setItem("name1", "1234567")
+// localStorage.removeItem("name1")
+
+// console.log(localStorage.getItem("name1"))
+// // localStorage.clear()
+
+// const userObject = {
+//     name:"Frank",
+//     age:10,
+//     email:"frank@gmail.com",
+//     phone:12344567876
+// }
+
+// localStorage.setItem("user", JSON.stringify(userObject))
+
+// console.log(JSON.parse(localStorage.getItem("user")))
+
+
+
+
+
+
+
+
+
+const input = document.querySelector("input")
+const todoContainer = document.querySelector(".remainder")
+let numOfItems = document.querySelector(".numOfItems")
+console.log(numOfItems);
+
+// we are checking if there is an itemn in the loal storage else we are creating a new array
+const todoArray =  JSON.parse(localStorage.getItem("todoItems")) || []
+
+// adding a submit event on the form
+form.addEventListener("submit", (e)=> {
+    // preventing the reloading a page on form submit
+    e.preventDefault()
+
+    // validation
+    if(input.value === ""){
+        return
+    }else{
+        // creating an object for every todotext
+        let todoObj = {
+            todoText:input.value,
+            id:new Date().getMilliseconds()
+        }
+        // we are pushing the object into an array
+        todoArray.push(todoObj)
+        // numOfItems.textContent = todoArray.length
+
+        // we are storing the array in the local storage
+        localStorage.setItem("todoItems", JSON.stringify(todoArray))
+
+        // we are updating the DOM based on the input value by the user
+        todoContainer.innerHTML += `
+                <div class="new-lower">
+                    <div class="duo-lower">
+                        <i class="bi bi-circle"></i>
+                        <p>${input.value}</p>
+                    </div>
+                    <i class="bi bi-x-lg"></i>
+                </div>
+        `
+        console.log(todoArray.length);
+        numOfItems.textContent = todoArray.length
+    }
+    input.value = ""
+})
+
+// We are reading from the storage
+function readFromStorage(){
+    // const storageItem = localStorage.getItem("todoItems")
+    // const decodedData = JSON.parse(storageItem)
+
+    numOfItems.textContent = todoArray.length
+
+    // we are looping through the array gotten from the local storage
+    todoArray.reverse().forEach(data => {
+        // we are updating the DOM based on the data gotten from the local storage
+        todoContainer.innerHTML += `
+                <div class="new-lower">
+                    <div class="duo-lower">
+                        <i class="bi bi-circle" ></i>
+                        <p>${data.todoText}</p>
+                    </div>
+                    <i class="bi bi-x-lg"></i>
+                </div>
+        `
+        console.log(data);
+    })
+
+    // console.log(decodedData)
+    // console.log(localStorage.getItem("todoItems"))
+}
+
+// calling the function
+readFromStorage()
